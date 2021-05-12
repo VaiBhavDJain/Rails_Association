@@ -1,0 +1,43 @@
+<%= link_to("BACK TO LIST",  author_index_path, :class => 'back-link')%>
+<div class="sujects show">
+  <h1>Show Author</h1>
+  <table summary="Author detail view">
+    <tr>
+      <th>Author Name :- </th>
+      <td><%= @author.name %></td>
+    </tr>
+  </table>
+</div>
+
+<h1>Total Books of <%= @author.name %> </h1>
+  <tr class="header">
+    <th>#</th>
+    <th> Book ID </th>
+    <th> Book Name </th>
+    <th> Book Author </th>
+    <br><br>
+  </tr>
+  <% (@author.books).each do |book|%>
+  <tr>
+    <td><%= book.id %></td> 
+    <td><%= book.book %></td>
+    <td><%= book.author.name %></td>
+    <br>
+  </tr>
+  <%end%>
+</table>
+
+
+<h1>Add Book</h1>
+<%= @author.books %>
+<%= form_for(@author,:url => author_book_create_path(@author),:method => 'post')do |f| %>
+<table summary="Bookfields">
+
+<th> Enter Book Name </th>
+<td><%= f.text_field(:books)%></td>
+</tr>
+</table>
+<div class="form-buttons">
+  <%= f.submit("Add Book for Author")%>
+</div>
+<%end%>

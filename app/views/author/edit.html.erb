@@ -1,0 +1,16 @@
+<%= link_to("BACK TO LIST", author_index_path, :class => 'back-link')%>
+
+<div class="author new">
+  <h1>Update Author</h1>
+  <%= form_for(@author,:url => author_path(@author),:method => 'patch')do |f| %>
+
+  <table summary="Subject for fields">
+  <tr>
+    <th> Author Name</th>
+    <td><%= f.text_field(:name)%></td>
+  </tr>
+  <div class="form-buttons">
+    <%= f.submit("Update Author")%>
+  </div>
+  <%end%>
+</div>

@@ -1,0 +1,58 @@
+
+<div class="suppliers index">
+<h1>Supplier</h1>
+<%= link_to("Add new Supplier",'supplier/new',:class => 'action new')%>
+<table class="listing" summary="Supplier list">
+  <tr class="header">
+    <th>#</th>
+    <th> Supplier ID </th>
+    <th> Supplier Name </th>
+  </tr>
+  <% @supplier.each do |sup|%>
+  <tr>
+    <td><%= sup.id %></td>
+    <td><%= sup.name %></td>
+    <td class = "action">
+      <%=link_to(" Show ",supplier_path(sup.id),:class=>'action show')%>
+      <%=link_to(" Edit",edit_supplier_path(sup.id),:class=>'action edit')%>
+      <%=link_to(" Delete ",delete_supplier_path(sup.id),:class=>'action delete')%>
+    </td>
+  </tr>
+  <%end%>
+</table>
+
+<h1>Supplier Account Details </h1>
+<table style="width:100%">
+  <tr class="header">
+    <th>#</th>
+    <th> Account ID </th>
+    <th> Supplier ID </th>
+    <th> Supplier Name </th>
+    <th> Acc Number </th>
+    <br><br>
+  </tr>
+  <% @account.each do |account|%>
+  <tr>
+    <td></td> 
+    <td><%= account.id %></td> 
+    <td><%= account.supplier_id %></td>
+    <td><%= account.supplier.name %></td>
+    <td><%= account.account_number%></td>
+    <br>
+  </tr>
+  <%end%>
+</table>
+
+
+
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+}
+</style>
+</head>

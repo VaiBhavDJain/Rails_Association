@@ -1,0 +1,59 @@
+
+<div class="authors index">
+<h1>Author</h1>
+<%= link_to("Add new Author",'author/new',:class => 'action new')%>
+<table class="listing" summary="Author list">
+  <tr class="header">
+    <th>#</th>
+    <th> Author ID </th>
+    <th> Author Name </th>
+  </tr>
+  <% @author.each do |aut|%>
+  <tr>
+    <td><%= aut.id %></td>
+    <td><%= aut.name %></td>
+    <td class = "action">
+      <%=link_to(" Show ",author_path(aut.id),:class=>'action show')%>
+      <%=link_to(" Edit",edit_author_path(aut.id),:class=>'action edit')%>
+      <%=link_to(" Delete ",delete_author_path(aut.id),:class=>'action delete')%>
+    </td>
+  </tr>
+  <%end%>
+</table>
+
+<h1>Book</h1>
+<table>
+  <tr class="header">
+    <th>#</th>
+    <th> Book ID </th>
+    <th> Book Name </th>
+    <th> Book Author </th>
+    <th> Author ID </th>
+    <br><br>
+  </tr>
+  <% @book.each do |book|%>
+  <tr> <td></td>
+    <td><%= book.id %></td> 
+    <td><%= book.book %></td>
+    <td><%= book.author.name %></td>
+    <td><%= book.author.id %></td>
+    <br>
+  </tr>
+  <%end%>
+</table>
+
+
+
+
+
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+}
+</style>
+</head>

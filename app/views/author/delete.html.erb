@@ -1,0 +1,13 @@
+<%= link_to("BACK TO LIST", author_index_path, :class => 'back-link')%>
+<div class="subject delete">
+  <h1>Delete Author</h1>
+  <%= form_for(@author,:url => author_path(@author),:method => 'delete')do |f| %>
+  <p>Are you sure you want to delete this subject </p>
+  <p class="reference-name"><%= @author.name%></p>
+
+
+  <div class="form-buttons">
+    <%= f.submit("Delete Author")%>
+  </div>
+  <%end%>
+</div>

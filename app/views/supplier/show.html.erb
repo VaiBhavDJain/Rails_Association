@@ -1,0 +1,14 @@
+<%= link_to("BACK TO LIST",  supplier_index_path, :class => 'back-link')%>
+<div class="sujects show">
+  <h1>Show Supplier</h1>
+  <table summary="Supplier detail view">
+    <tr>
+      <th>Supplier Name :- </th>
+      <td><%= @supplier.name %></td>
+    </tr>
+  </table>
+</div>
+
+<h1>Account Number is :- <%= @supplier.account.account_number %> </h1>
+<h2>Account of :- <%= @supplier.account.supplier.name %> </h2>
+<h3>Account ID is :- <%= @supplier.account.id %> </h3>
