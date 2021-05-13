@@ -1,0 +1,16 @@
+<%= link_to("Back Button", supp_index_path, :class => 'back-link')%>
+<div class="author new">
+
+  <h1>Create Supplier</h1>
+  <%= form_for(@supplier,:url => supp_index_path,:method => 'post')do |f| %>
+  <table>
+  <tr>
+    <th> Enter Supplier Name </th>
+    <td><%= f.text_field(:name)%></td>
+    </tr>
+  </table>
+  <div class="form-buttons">
+    <%= f.submit("Create Suppliers")%>
+  </div>
+  <%end%>
+</div>

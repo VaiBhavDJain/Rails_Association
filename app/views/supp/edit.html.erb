@@ -1,0 +1,18 @@
+<%= link_to("Back Button to Index Page", supp_index_path, :class => 'back-link')%>
+
+<div>
+  <h1>Update Supplier</h1>
+  <%= form_for(@supplier,:url => supp_path(@supplier),:method => 'patch')do |f| %>
+
+  <table>
+  <tr>
+    <th> Enter Supplier Name</th>
+    <td><%= f.text_field(:name)%></td>
+  </tr>
+  <table>
+  <div class="form-buttons">
+    <%= f.submit("Update")%>
+  </div>
+  <%end%>
+</div>
+

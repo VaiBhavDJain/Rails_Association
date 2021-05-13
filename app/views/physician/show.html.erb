@@ -1,0 +1,80 @@
+<%= link_to("BACK",  physician_index_path, :class => 'back-link')%>
+<div>
+  <h1>Show Physician</h1>
+  <table>
+    <tr>
+      <th>Physician Id :- </th>
+      <td><%= @physician.id %></td>
+    </tr>
+    <tr>
+      <th>Physician Name :- </th>
+      <td><%= @physician.name %></td>
+    </tr>
+  </table>
+</div>
+
+<h1>Physician Appointment Details</h1>
+<table style="width:100%">
+  <tr class="header">
+    <th>#</th>
+    <th> Appointment ID </th>
+    <th> Physician ID </th>
+    <th> Physician Name </th>
+    <th> Patient ID </th>
+    <th> Patient Name </th>
+    <th> Appointment Date </th>
+    <br><br>
+  </tr>
+  <% (@physician.appointments).each do |data|%>
+  <tr>
+    <td></td> 
+    <td><%= data.id %></td> 
+    <td><%= data.physician_id %></td>
+    <td><%= data.physician.name %></td>
+    <td><%= data.patient_id %></td>  
+    <td><%= data.patient.name %></td>  
+    <td><%= data.appointment_date %></td> 
+    <br>
+  </tr>
+  <%end%>
+</table>
+
+
+<h1>Add Appointment</h1>
+<% @physician.appointments.last %>
+
+<%= form_for(@physician.appointments.new , :url => physician_create_appointment_path(@physician),:method => 'post')do |f| %>
+<table>
+<tr>
+<th> Enter Patient ID </th>
+<td><%= f.text_field(:patient_id)%></td>
+</tr>
+<tr>
+<th> Enter Appointment Date </th>
+<td><%= f.text_field(:appointment_date)%></td>
+</tr>
+</table>
+<div class="form-buttons">
+  <%= f.submit("Add Appointment")%>
+</div>
+<%end%>
+
+
+
+<head>
+<style>
+table {
+  border-spacing: 0.5rem;
+}
+td {
+  padding: 0.5rem;
+}
+td:nth-child(1) { background: hsl(150, 50%, 50%); }
+td:nth-child(2) { background: hsl(160, 60%, 50%); }
+td:nth-child(3) { background: hsl(170, 70%, 50%); }
+td:nth-child(4) { background: hsl(180, 80%, 50%); }
+td:nth-child(5) { background: hsl(190, 90%, 50%); }
+td:nth-child(6) { background: hsl(200, 99%, 50%); }
+td:nth-child(7) { background: hsl(200, 20%, 50%); }
+</style>
+</head>

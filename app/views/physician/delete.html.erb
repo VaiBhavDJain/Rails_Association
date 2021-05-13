@@ -1,0 +1,14 @@
+<%= link_to("Back", physician_index_path, :class => 'back-link')%>
+<div class="Physician delete">
+  <h1>Delete Physician</h1>
+  <%= form_for(@physician,:url => physician_path(@physician),:method => 'delete')do |f| %>
+  <p>Are you sure you want to delete this Physician</p>
+  
+  <p class="reference-name"><%= @physician.name%></p>
+
+
+  <div class="form-buttons">
+    <%= f.submit("Delete")%>
+  </div>
+  <%end%>
+</div>

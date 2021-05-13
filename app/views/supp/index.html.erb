@@ -1,0 +1,93 @@
+
+
+<h1>Supplier Index</h1>
+<%= link_to("Add New Supplier",'supp/new',:class => 'action new')%>
+
+<table>
+  <tr>
+    <th>#</th>
+    <th> Supplier ID </th>
+    <th> Supplier Name </th>
+  </tr>
+  <% @supplier.each do |sup|%>
+  <tr>
+    <td><%= sup.id %></td>
+    <td><%= sup.name %></td>
+    <td class = "action">
+      <%=link_to(" Show ",supp_path(sup.id),:class=>'action show')%>
+      <%=link_to(" Edit",edit_supp_path(sup.id),:class=>'action edit')%>
+      <%=link_to(" Delete ",delete_supp_path(sup.id),:class=>'action delete')%>
+    </td>
+  </tr>
+  <%end%>
+</table>
+
+<h1>Account Details </h1>
+<table style="width:100%">
+  <tr class="header">
+    <th>#</th>
+    <th> Account ID </th>
+    <th> Supplier ID </th>
+    <th> Supplier Name </th>
+    <th> Account Number </th>
+    <br><br>
+  </tr>
+  <% @account.each do |account|%>
+  <tr>
+    <td></td> 
+    <td><%= account.id %></td> 
+    <td><%= account.supp_id %></td>
+    <td><%= account.supp.name %></td>
+    <td><%= account.account_number%></td>
+    <br>
+  </tr>
+  <%end%>
+</table>
+
+
+
+<h1>Account Details </h1>
+<table style="width:100%">
+  <tr class="header">
+    <th>#</th>
+    <th> History ID </th>
+    <th> History Credit Rating</th>
+    <th> Account Number</th>
+    <th> Account ID</th>
+    <th> Owner </th>
+    <th> Owner ID </th>
+    <br><br>
+  </tr>
+  <% @account_history.each do |history|%>
+  <tr>
+    <td></td>
+    <td><%= history.id %></td> 
+    <td><%= history.credit_rating %></td>
+    <td><%= history.acco.account_number %></td>
+    <td><%= history.acco.id %></td>
+    <td><%= history.acco.supp.name %></td>
+    <td><%= history.acco.supp.id %></td>
+    <br>
+  </tr>
+  <%end%>
+</table>
+
+
+
+<head>
+<style>
+table {
+  border-spacing: 0.5rem;
+}
+td {
+  padding: 0.5rem;
+}
+td:nth-child(1) { background: hsl(150, 50%, 50%); }
+td:nth-child(2) { background: hsl(160, 60%, 50%); }
+td:nth-child(3) { background: hsl(170, 70%, 50%); }
+td:nth-child(4) { background: hsl(180, 80%, 50%); }
+td:nth-child(5) { background: hsl(190, 90%, 50%); }
+td:nth-child(6) { background: hsl(200, 99%, 50%); }
+td:nth-child(7) { background: hsl(200, 20%, 50%); }
+</style>
+</head>

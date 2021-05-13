@@ -1,0 +1,89 @@
+
+<div>
+<h1>Physician</h1>
+<%= link_to("Add New Physician",'physician/new',:class => 'action new')%>
+
+<table class="listing">
+  <tr class="header">
+    <th>#</th>
+    <th> Physician ID </th>
+    <th> Physician Name </th>
+  </tr>
+  <% @physician.each do |phy|%>
+  <tr>
+    <td><%= phy.id %></td>
+    <td><%= phy.name %></td>
+    <td class = "action">
+      <%=link_to(" Show ",physician_path(phy.id),:class=>'action show')%>
+      <%=link_to(" Edit",edit_physician_path(phy.id),:class=>'action edit')%>
+      <%=link_to(" Delete ",delete_physician_path(phy.id),:class=>'action delete')%>
+    </td>
+  </tr>
+  <%end%>
+</table>
+
+<h1>Appointment Details </h1>
+<table style="width:100%">
+  <tr class="header">
+    <th>#</th>
+    <th> Appointment ID </th>
+    <th> Physician ID </th>
+    <th> Physician Name </th>
+    <th> Patient ID </th>
+    <th> Patient Name </th>
+    <th> Appointment Date </th>
+    <br><br>
+  </tr>
+  <% @appointment.each do |appointment|%>
+  <tr>
+    <td></td> 
+    <td><%= appointment.id %></td> 
+    <td><%= appointment.physician.id %></td>
+    <td><%= appointment.physician.name %></td>
+    <td><%= appointment.patient.id%></td>
+    <td><%= appointment.patient.name%></td>
+    <td><%= appointment.appointment_date%></td>
+    <br>
+  </tr>
+  <%end%>
+</table>
+
+
+
+<h1>Patient Details </h1>
+<table style="width:100%">
+  <tr class="header">
+    <th>#</th>
+    <th> Patient ID </th>
+    <th> Patient Name </th>
+    <br><br>
+  </tr>
+  <% @patient.each do |pat|%>
+  <tr>
+    <td></td>
+    <td><%= pat.id %></td> 
+    <td><%= pat.name %></td>
+    <br>
+  </tr>
+  <%end%>
+</table>
+
+
+
+<head>
+<style>
+table {
+  border-spacing: 0.5rem;
+}
+td {
+  padding: 0.5rem;
+}
+td:nth-child(1) { background: hsl(150, 50%, 50%); }
+td:nth-child(2) { background: hsl(160, 60%, 50%); }
+td:nth-child(3) { background: hsl(170, 70%, 50%); }
+td:nth-child(4) { background: hsl(180, 80%, 50%); }
+td:nth-child(5) { background: hsl(190, 90%, 50%); }
+td:nth-child(6) { background: hsl(200, 99%, 50%); }
+td:nth-child(7) { background: hsl(200, 20%, 50%); }
+</style>
+</head>

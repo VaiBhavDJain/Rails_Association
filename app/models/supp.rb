@@ -1,6 +1,8 @@
 class Supp < ApplicationRecord
-    has_one :acco
-  has_one :acco_history, through: :acco
+    has_one :acco , dependent: :destroy
+  has_one :acco_history, through: :acco 
+  
+  accepts_nested_attributes_for :acco_history
 end
 
 # sup = Supp.find(4)
