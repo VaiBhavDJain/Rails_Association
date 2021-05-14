@@ -1,0 +1,62 @@
+
+<div class="Teacher index">
+<h1>Teacher</h1>
+<%= link_to("Add new Teacher",'teacher/new',:class => 'action new')%>
+<table class="listing">
+  <tr class="header">
+    <th>#</th>
+    <th> Teacher ID </th>
+    <th> Teacher Name </th>
+    <th> Teacher Age </th>
+    <th> Teacher (Students ID) </th>
+  </tr>
+  <% @teacher.each do |t|%>
+  <tr>
+  <td></td>
+    <td><%= t.id %></td>
+    <td><%= t.name %></td>
+    <td><%= t.age %></td>
+    <td><%= t.students.ids %></td>
+    <td class = "action">
+      <%=link_to(" Show ",teacher_path(t.id),:class=>'action show')%>
+      <%=link_to(" Edit",edit_teacher_path(t.id),:class=>'action edit')%>
+      <%=link_to(" Delete ",delete_teacher_path(t.id),:class=>'action delete')%>
+    </td>
+  </tr>
+  <%end%>
+</table>
+
+<h1>Students</h1>
+<table style="width:100%">
+  <tr class="header">
+    <th>#</th>
+    <th> Student ID </th>
+    <th> Student Name </th>
+    <th> Student Age </th>
+    <th> Student Roll Number </th>
+    <th> Student (Teacher ID)</th>
+    <br><br>
+  </tr>
+  <% @student.each do |s|%>
+  <tr>
+    <td></td> 
+    <td><%= s.id %></td> 
+    <td><%= s.name %></td>
+    <td><%= s.age %></td>
+    <td><%= s.roll_no %></td>
+    <td><%= s.teachers.ids %></td>
+    <br>
+  </tr>
+  <%end%>
+</table>
+
+
+
+<head>
+<style>
+tbody tr:nth-child(odd) {background-color: #ccff66;}
+tbody tr:nth-child(even) {background-color: #ccffee;}
+body{background-color:  #8080ff;}
+table {background-color: #9900cc;}
+</style>
+</head>

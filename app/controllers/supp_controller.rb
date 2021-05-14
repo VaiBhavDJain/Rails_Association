@@ -23,7 +23,18 @@ class SuppController < ApplicationController
           render('new')
         end        
       end
-            
+          
+      def history_update
+        account_history = AccoHistory.find(supplier_id_params)
+        supplier_id = account_history.acco.supp_id
+        @supplier = Supp.find(supplier_id)
+        if @supplier.acco.acco_history.update(history_update_params)
+          redirect_to(supp_index_path)
+        else
+          render('show')
+        end
+      end
+
       def edit
         @supplier = Supp.find(params[:id])
       end
@@ -48,6 +59,14 @@ class SuppController < ApplicationController
       private
       def supplier_params
         params.required(:supp).permit(:name)
+      end
+      
+      def supplier_id_params
+        params.require(:supp_id)
+      end
+
+      def history_update_params
+        params.require(:acco_history).permit(:credit_rating)
       end
 end
 # sup = Supp.create(name: "Test")

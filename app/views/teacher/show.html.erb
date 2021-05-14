@@ -1,0 +1,14 @@
+<%= link_to("BACK TO LIST",  teacher_index_path, :class => 'back-link')%>
+<div class="teacher show">
+  <h1>Show Teacher</h1>
+  <table>
+    <tr>
+      <th>Teacher Name :- </th>
+      <td><%= @teacher.name %></td>
+      </tr>
+      <tr>
+      <th>Teacher Students :- </th>
+      <td><%= @teacher.students.ids %></td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,48 @@
+<%= link_to("BACK",  employee_index_path, :class => 'back-link')%>
+<div>
+  <h1>Show Employee</h1>
+  <table class="styled-table">
+    <tr>
+      <th>Employee Id :- </th>
+      <td><%= @employee.id %></td>
+    </tr>
+    <tr>
+      <th>Employee Name :- </th>
+      <td><%= @employee.name %></td>
+    </tr>
+  </table>
+</div>
+
+
+
+<div>
+  <h1>Create Product</h1>
+  <% @product = Product.new %>
+  <%= form_for(@product, :url => employee_create_product_path(@employee),:method => 'post')do |f| %>
+ <table>
+  <tr>
+    <th> Enter Product Name </th>
+    <td><%= f.text_field(:name)%></td>
+    </tr>
+  </table>
+  <div class="form-buttons">
+    <%= f.submit("Create Product")%>
+  </div>
+  <%end%>
+</div>
+
+
+<div>
+  <h1>Create Picture</h1>
+  <%= form_for(@employee.pictures.new, :url => employee_create_employee_picture_path(@employee),:method => 'post')do |fo| %>
+ <table>
+  <tr>
+    <th> Enter Product Name </th>
+    <td><%= fo.text_field(:name)%></td>
+    </tr>
+  </table>
+  <div class="form-buttons">
+    <%= fo.submit("Create Picture")%>
+  </div>
+  <%end%>
+</div>

@@ -1,0 +1,17 @@
+<%= link_to("Back", employee_index_path, :class => 'back-link')%>
+
+<div>
+  <h1>Update Employee</h1>
+  <%= form_for(@employee,:url => employee_path(@employee),:method => 'patch')do |f| %>
+
+  <table>
+  <tr>
+    <th> Enter Employee Name</th>
+    <td><%= f.text_field(:name)%></td>
+  </tr>
+  <table>
+  <div class="form-buttons">
+    <%= f.submit("Update")%>
+  </div>
+  <%end%>
+</div>

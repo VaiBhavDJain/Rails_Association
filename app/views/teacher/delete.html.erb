@@ -1,0 +1,13 @@
+<%= link_to("Back", teacher_index_path, :class => 'back-link')%>
+<div class="Teacher delete">
+  <h1>Delete Teacher</h1>
+  <%= form_for(@teacher,:url => teacher_path(@teacher),:method => 'delete')do |f| %>
+  <p>Are you sure you want to delete this Teacher</p>
+  
+  <p class="reference-name"><%= @teacher.name%></p>
+
+  <div class="form-buttons">
+    <%= f.submit("Delete")%>
+  </div>
+  <%end%>
+</div>

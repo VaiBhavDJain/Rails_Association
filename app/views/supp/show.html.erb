@@ -63,6 +63,22 @@
 </table>
 
 
+<div>
+  <h1>Update Account History</h1>
+  <%= form_for(@supplier.acco.acco_history,:url => supp_update_history_path(@supplier.acco.acco_history),:method => 'patch')do |f| %>
+
+  <table>
+  <tr>
+    <th> Enter Credit Rating</th>
+    <td><%= f.text_field(:credit_rating)%></td>
+  </tr>
+  <table>
+  <div class="form-buttons">
+    <%= f.submit("Update")%>
+  </div>
+  <%end%>
+</div>
+
 
 <head>
 <style>

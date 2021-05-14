@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_11_034905) do
+ActiveRecord::Schema.define(version: 2021_05_13_105930) do
 
   create_table "acco_histories", force: :cascade do |t|
     t.integer "acco_id"
@@ -38,17 +38,6 @@ ActiveRecord::Schema.define(version: 2021_05_11_034905) do
     t.index ["physician_id"], name: "index_appointments_on_physician_id"
   end
 
-  create_table "assemblies", force: :cascade do |t|
-    t.string "name"
-  end
-
-  create_table "assembly_parts", force: :cascade do |t|
-    t.integer "assembly_id"
-    t.integer "part_id"
-    t.index ["assembly_id"], name: "index_assembly_parts_on_assembly_id"
-    t.index ["part_id"], name: "index_assembly_parts_on_part_id"
-  end
-
   create_table "authors", force: :cascade do |t|
     t.string "name"
   end
@@ -61,10 +50,6 @@ ActiveRecord::Schema.define(version: 2021_05_11_034905) do
 
   create_table "employees", force: :cascade do |t|
     t.string "name"
-  end
-
-  create_table "parts", force: :cascade do |t|
-    t.string "part_number"
   end
 
   create_table "patients", force: :cascade do |t|
@@ -86,12 +71,37 @@ ActiveRecord::Schema.define(version: 2021_05_11_034905) do
     t.string "name"
   end
 
+  create_table "students", force: :cascade do |t|
+    t.string "name"
+    t.integer "age"
+    t.integer "roll_no"
+  end
+
+  create_table "students_teachers", force: :cascade do |t|
+    t.integer "teacher_id", null: false
+    t.integer "student_id", null: false
+    t.index ["student_id"], name: "index_students_teachers_on_student_id"
+    t.index ["teacher_id"], name: "index_students_teachers_on_teacher_id"
+  end
+
   create_table "suppliers", force: :cascade do |t|
     t.string "name"
   end
 
   create_table "supps", force: :cascade do |t|
     t.string "name"
+  end
+
+  create_table "teachers", force: :cascade do |t|
+    t.string "name"
+    t.string "age"
+  end
+
+  create_table "vehicles", force: :cascade do |t|
+    t.string "type"
+    t.string "name"
+    t.string "color"
+    t.integer "price"
   end
 
   create_table "workers", force: :cascade do |t|
@@ -101,5 +111,7 @@ ActiveRecord::Schema.define(version: 2021_05_11_034905) do
 
   add_foreign_key "accounts", "suppliers"
   add_foreign_key "books", "authors"
+  add_foreign_key "students_teachers", "students"
+  add_foreign_key "students_teachers", "teachers"
   add_foreign_key "workers", "workers", column: "manager_id"
 end

@@ -1,0 +1,21 @@
+<%= link_to("Back Button", teacher_index_path, :class => 'back-link')%>
+<div class="teacher new">
+
+  <h1>Create Teacher</h1>
+  <%= form_for(@teacher,:url => teacher_index_path,:method => 'post')do |f| %>
+  <table >
+  <tr>
+    <th> Enter Teacher Name </th>
+    <td><%= f.text_field(:name)%></td>
+  </tr>
+  <tr>
+  <th> Enter Teacher Age </th>
+  <td><%= f.text_field(:age)%></td>
+</tr>
+  </table>
+  <div class="form-buttons">
+    <%= f.submit("Create Teacher")%>
+  </div>
+  <%end%>
+</div>
+
